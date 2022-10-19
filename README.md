@@ -106,23 +106,22 @@ git push -f
 
 ## Add +x in windows
 
-`git update-index --chmod=+x vpc_init_check.sh`
-commit file & push
+- `git update-index --chmod=+x vpc_init_check.sh`
+- commit file & push
 
 ## Enable Symlinks
-Windows Search > "developer settings" > Set Developer mode to true
-`git config --global core.symlinks true`
+- Windows Search > "developer settings" > Set Developer mode to true
+- `git config --global core.symlinks true`
 
 # .gitignore
 
 ## apply .gitignore retroactivley
 
-make changes to .gitignore and commit them
-clear repo: `git rm -r --cached .`
-readd everything: `git add .`
-commit: `git commit -m ".gitignore fix"`
-
-more: http://www.codeblocq.com/2016/01/Untrack-files-already-added-to-git-repository-based-on-gitignore/
+- make changes to .gitignore and commit them
+- clear repo: `git rm -r --cached .`
+- readd everything: `git add .`
+- commit: `git commit -m ".gitignore fix"`
+- more: http://www.codeblocq.com/2016/01/Untrack-files-already-added-to-git-repository-based-on-gitignore/
 
 # Rebase
 
@@ -132,12 +131,10 @@ more: http://www.codeblocq.com/2016/01/Untrack-files-already-added-to-git-reposi
 - Be CAREFUL as 'ours' and 'theirs' is flipped from what you might think when you rebase.
 - When you rebase you are starting from the perspective of what is on github.com, and then you are adding in "somebody else" (theirs) changes on your existing (and behind main) branch.
 
-Select your branch: `git checkout --theirs PATH/FILE`
-Select from main (good for undoing your work): `git checkout --ours PATH/FILE`
-
-If you have multiple files and you want to accept the new branch (probably your work). Yes works in windows git shell. `grep -lr "<<<<<<<" . | xargs git checkout --theirs`
-
-If you have multiple files and you want to accept main (good for undoing your work), run: `grep -lr "<<<<<<<" . | xargs git checkout --ours`
+- Select your branch: `git checkout --theirs PATH/FILE`
+- Select from main (good for undoing your work): `git checkout --ours PATH/FILE`
+- If you have multiple files and you want to accept the new branch (probably your work). Yes works in windows git shell. `grep -lr "<<<<<<<" . | xargs git checkout --theirs`
+- If you have multiple files and you want to accept main (good for undoing your work), run: `grep -lr "<<<<<<<" . | xargs git checkout --ours`
 
 ## You branched from a branch and now it's weird.
 
@@ -210,9 +207,8 @@ Have everyone else clone a fresh copy into an empty dir. If you try to pull from
 
 # How to split up a PR that got out of control
 
-Problem - you made a giant PR and your team hates you. Breaking it up into smaller PRs would get them to hate you less.
-
-So you have a giant branch, let's call that "giant_list_of_changes". This is what we are going to break up into little branches.
+- Problem - you made a giant PR and your team hates you. Breaking it up into smaller PRs would get them to hate you less.
+- So you have a giant branch, let's call that "giant_list_of_changes". This is what we are going to break up into little branches.
 
 ## Create a sub branch
 
@@ -229,13 +225,12 @@ git pull
 
 ## Create a new branch
 
-switch to a new branch that will eventually have only a subset of your changes
-
-`git checkout -b just_logging`
+- switch to a new branch that will eventually have only a subset of your changes
+- `git checkout -b just_logging`
 
 ## Checkout work from the big branch
 
-`git checkout -p giant_list_of_changes -- src/pick/a/file.py`
+- `git checkout -p giant_list_of_changes -- src/pick/a/file.py`
 
 - The `-p` flag lets you use the interactive interface to show the diff between your working tree and the giant_list_of_changes branch.
 
@@ -245,8 +240,8 @@ switch to a new branch that will eventually have only a subset of your changes
 
 - Continue adding files / chucks until you are happy, then commit and push
 
-`git commit -m "just logging things"`
-`git push --set-upstream origin just_logging`
+- `git commit -m "just logging things"`
+- `git push --set-upstream origin just_logging`
 
 ## Go to gh, create a PR, get that subset reviewed.
 
@@ -370,7 +365,7 @@ switch to a new branch that will eventually have only a subset of your changes
   - You will be in a detached head, but your local filesystem will update, and you can see the change is back in your working tree.
   - `git checkout master` gets you out of the detached head state. It will warn about your abandoned commit as it's not associated with a branch, but you can always create a new branch with: `git branch <new-branch-name> 062c2ab`
 
-Also, since we pushed to gh, you can view the commit at: https://github.com/dlardo/repo/commit/062c2ab
+- Also, since we pushed to gh, you can view the commit at: https://github.com/dlardo/repo/commit/062c2ab
 
 # New Machines
 
@@ -383,13 +378,12 @@ copy in ~.ssh/id_rsa.pub and id_rsa
 chmod 600 ~/.ssh/id_rsa*
 ```
 
-Test with: `ssh -T git@github.com`
-
-- You should get: "Hi dlardo! You've successfully authenticated, but GitHub does not provide shell access."
+- Test with: `ssh -T git@github.com`
+  - You should get: "Hi dlardo! You've successfully authenticated, but GitHub does not provide shell access."
 
 ## View all git settings
 
-`git config --list --global`
+- `git config --list --global`
 
 # .gitconfig files
 
