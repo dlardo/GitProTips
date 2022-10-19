@@ -109,6 +109,10 @@ git push -f
 `git update-index --chmod=+x vpc_init_check.sh`
 commit file & push
 
+## Enable Symlinks
+Windows Search > "developer settings" > Set Developer mode to true
+`git config --global core.symlinks true`
+
 # .gitignore
 
 ## apply .gitignore retroactivley
