@@ -43,6 +43,24 @@ same as above but use HTTPS
 `git remote set-url origin https://github.com/dlardo/kudu.git`
 More: https://help.github.com/articles/changing-a-remote-s-url/
 
+## Push existing files into a new repo
+* Create a new, empty repo on github.com
+  * https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository
+* copy & edit the NEWREPO= variable below. Paste into your bash shell
+```
+export NEWREPO="perforce"
+echo "# ${NEWREPO}" > README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:dlardo/${NEWREPO}.git
+git push -uf origin main
+unset NEWREPO
+git status
+```
+* edit your .gitignore, commit and push files as usual
+
 # Remote Branches
 
 ## list remote branches and then check them out
